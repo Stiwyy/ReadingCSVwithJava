@@ -1,5 +1,4 @@
 package org.example;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,19 +10,28 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        //Date formating
         final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        //Path to file
         String filePath = "src/main/resources/realtime.csv";
 
+        /*
+        ================================================
+         * Aufgabe 1
+        ================================================
+         */
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line = reader.readLine();
 
             while ((line = reader.readLine()) != null) {
                 String[] tokens = line.split(";");
 
+                //Date location and title getting extracted
                 String datum = tokens[8];
                 String ort = tokens[6];
                 String titel = tokens[11];
 
+                //Checks if date is in between 2 dates
                 if (istImZeitraum(datum)) {
                     System.out.println("Ort: " + ort + " | Titel: " + titel);
                 }
@@ -33,11 +41,14 @@ public class Main {
             System.err.println(e.getMessage());
         }
         /*
-        ================================================================================
+        ================================================
+         * Aufgabe 2
+        ================================================
          */
 
         List<Championship> championships = new ArrayList<>();
 
+        //Adds Data to the List manually.
         championships.add(new Championship(
                 515, 3253, 2013,
                 new Date(113, 10, 19), new Date(113, 10, 25),
@@ -73,9 +84,12 @@ public class Main {
         }
 
         /*
-        ==========================================================================================
+        ================================================
+         * Aufgabe 3
+        ================================================
          */
 
+        //Adds Data to List from the csv file
         List<Championship> championships1 = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line = reader.readLine();
