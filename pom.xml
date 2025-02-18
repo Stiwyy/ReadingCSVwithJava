@@ -14,4 +14,19 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+    <dependency>
+        <groupId>net.sourceforge.csvjdbc</groupId>
+        <artifactId>csvjdbc</artifactId>
+        <version>1.0.28</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.googlecode.jcsv</groupId>
+        <artifactId>jcsv</artifactId>
+        <version>1.4.0</version>
+    </dependency>
+
+</dependencies>
+
 </project>
